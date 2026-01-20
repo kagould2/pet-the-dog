@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pet the Dog</title>
+<style>
+  body {
+    background: #cceeff;
+    font-family: sans-serif;
+    text-align: center;
+    cursor: pointer;
+  }
 
+  #game {
+    margin-top: 40px;
+  }
+
+  #dog {
+    position: relative;
+    width: 200px;
+    height: 140px;
+    margin: 0 auto;
+    background: #b5651d;
+    border-radius: 80px 80px 60px 60px;
+    transition: transform 0.2s;
+  }
+
+  .ear {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: #8b4513;
+    border-radius: 20px;
+    top: -30px;
+  }
+
+  .ear.left { left: 20px; }
+  .ear.right { right: 20px; }
+
+  .eye {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    top: 50px;
+  }
+
+  .eye.left { left: 60px; }
+  .eye.right { right: 60px; }
+
+  #tail {
+    position: absolute;
+    width: 60px;
+    height: 12px;
+    background: #8b4513;
+    right: -40px;
+    top: 70px;
+    border-radius: 10px;
+    transform-origin: left center;
+  }
+
+  .happy {
+    transform: scale(1.05);
+  }
+
+  .wag {
+    animation: wag 0.2s infinite alternate;
+  }
+
+  @keyframes wag {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(-20deg); }
+  }
+
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🐾 Pet the Dog 🐾</h1>
+<p>Move your cursor over the dog!</p>
+
+<div id="game">
+  <div id="dog">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div id="tail"></div>
+  </div>
+</div>
+
+<script>
+  const dog = document.getElementById("dog");
+  const tail = document.getElementById("tail");
+  const message = document.getElementById("message");
+
+  dog.addEventListener("mouseenter", () => {
+    dog.classList.add("happy");
+    tail.classList.add("wag");
+  });
+
+  dog.addEventListener("mouseleave", () => {
+    dog.classList.remove("happy");
+    tail.classList.remove("wag");
+  });
+</script>
+
+</body>
+
+</html>
